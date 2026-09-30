@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Diosa Flowers — Miami</title>
+<meta name="description" content="La Diosa Flowers, Miami. Hand-made rose bouquets. Pick one, choose your delivery time, done.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0608; --bg2:#150a0d; --ink:#f6ebe1; --ink-2:#c9b4a6; --muted:#8a7469;
+  --rose:#c4132f; --rose-2:#e63a55; --rose-deep:#6f0b1d; --gold:#cfa76b; --cream:#f3e6d8;
+  --paper:#f7f1ea; --paper-2:#efe6dc; --paper-ink:#1c0f12; --paper-muted:#7a6660; --paper-line:rgba(28,15,18,.1);
+  --line:rgba(246,235,225,.14);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Montserrat',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--rose);color:#fff}
+.eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.wrap{width:min(1360px,100% - 2rem);margin-inline:auto}
+@media(min-width:900px){.wrap{width:min(1360px,100% - 6rem)}}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1}
+em{font-style:italic;color:var(--rose-2)}
+
+/* grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay}
+
+/* preloader */
+.loader{position:fixed;inset:0;z-index:9800;background:var(--bg);display:grid;place-items:center;transition:opacity .8s var(--ease),visibility .8s}
+.loader.is-done{opacity:0;visibility:hidden}
+.loader__mark{width:110px;height:110px;border-radius:50%;overflow:hidden;display:grid;place-items:center;box-shadow:0 0 0 1px var(--line),0 30px 80px rgba(196,19,47,.25);margin-inline:auto}
+.loader p{margin-top:1.2rem;font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--ink-2);text-align:center}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem clamp(1rem,4vw,3rem);transition:background .5s,backdrop-filter .5s,color .5s;color:var(--ink)}
+.nav.is-solid{background:rgba(12,6,8,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);color:var(--ink)}
+.nav__brand{display:flex;align-items:center;gap:.7rem;font-family:var(--serif);font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.nav__brand i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.95rem;letter-spacing:.02em;border:1px solid currentColor}
+.nav__links{display:none;gap:2rem;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase}
+.nav__links a{position:relative;padding:.4rem 0}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.nav__links a:hover::after{transform:scaleX(1);transform-origin:left}
+@media(min-width:900px){.nav__links{display:flex}}
+.nav__cta{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;background:var(--rose);color:#fff;padding:.75rem 1.1rem;border-radius:999px;white-space:nowrap;transition:background .3s,transform .3s}
+.nav__cta:hover{background:var(--rose-2);transform:translateY(-1px)}
+
+@media(max-width:560px){.nav__name{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:500;padding:1.05rem 1.6rem;border-radius:999px;border:1px solid var(--cream);color:var(--cream);position:relative;overflow:hidden;transition:transform .4s var(--ease),border-color .4s,color .4s;min-height:48px}
+.btn::before{content:"";position:absolute;inset:0;background:var(--rose);transform:translateY(101%);transition:transform .45s var(--ease);z-index:-1;border-radius:inherit}
+.btn:hover{border-color:var(--rose);transform:translateY(-2px)}
+.btn:hover::before{transform:none}
+.btn--solid{background:var(--rose);border-color:var(--rose);color:#fff}
+.btn--solid::before{background:var(--rose-deep)}
+.btn--dark{border-color:var(--paper-ink);color:var(--paper-ink)}
+.btn--dark:hover{color:#fff}
+.btn svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;isolation:isolate;background:var(--bg);color:var(--ink)}
+.hero__media{position:absolute;inset:9% 3% 5% 46%;z-index:-2;will-change:transform;display:grid;place-items:center}
+.hero__media img{width:100%;height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 50px 70px rgba(0,0,0,.6))}
+.hero__veil{position:absolute;inset:0;z-index:-3;background:radial-gradient(60% 55% at 72% 50%,rgba(196,19,47,.28),transparent 70%),linear-gradient(160deg,#1a0a0e 0%,var(--bg) 60%,#0a0405 100%)}
+.hero canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero__inner{position:relative;z-index:1;padding:8rem clamp(1rem,4vw,3rem) clamp(2.5rem,7vh,5rem);max-width:1100px}
+.hero__inner .eyebrow{opacity:0}
+.hero__title{font-size:clamp(3.6rem,11vw,9rem);letter-spacing:-.02em;line-height:.88;margin:.8rem 0 1.1rem;text-shadow:0 20px 60px rgba(0,0,0,.55)}
+.hero__title .l{display:inline-block;opacity:0;transform:translateY(60%) rotate(4deg)}
+.hero__sub{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.9rem);line-height:1.25;color:var(--cream);max-width:24ch;opacity:0}
+.hero__btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem;opacity:0}
+@media(max-width:520px){.hero__btns .btn{flex:1 1 100%}}
+@media(max-width:899px){.hero{grid-template-rows:auto auto;align-items:start;min-height:0}.hero__media{position:relative;inset:auto;height:56svh;padding:5.5rem 1.2rem 0;z-index:0}.hero__veil{background:radial-gradient(50% 32% at 50% 34%,rgba(196,19,47,.3),transparent 70%),linear-gradient(var(--bg),#150a0d)}.hero__inner{padding-top:0;margin-top:-1rem;position:relative;z-index:2}}
+
+/* signature: pinned sideways gallery of real bouquets */
+.sig{background:var(--paper);color:var(--paper-ink);position:relative;overflow:hidden}
+.sig__pin{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:5.5rem 0 3rem}
+@media(min-width:900px){.sig__pin{height:100svh;padding:0}}
+.sig__head{padding:0 clamp(1rem,4vw,3rem);margin-bottom:1.6rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.sig__head .eyebrow{color:var(--rose)}
+.sig__head h2{font-size:clamp(2.6rem,6.5vw,6rem);letter-spacing:-.02em;line-height:.95;margin-top:.6rem}
+.sig__head h2 em{color:var(--rose)}
+.sig__head p{max-width:34ch;color:var(--paper-muted)}
+.sig__track{display:flex;gap:clamp(1rem,2.2vw,2rem);padding:0 clamp(1rem,4vw,3rem);width:max-content;will-change:transform;align-items:center}
+@media(max-width:899px){.sig__track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;scrollbar-width:none}.sig__track::-webkit-scrollbar{display:none}}
+.sigcard{position:relative;flex:0 0 auto;width:clamp(240px,30vw,400px);scroll-snap-align:center;cursor:pointer;transition:transform .5s var(--ease)}
+.sigcard:nth-child(even){transform:translateY(clamp(12px,3vh,36px))}
+.sigcard:hover{transform:translateY(-6px)}
+.sigcard__img{aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -28px rgba(28,15,18,.45)}
+.sigcard__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.sigcard:hover .sigcard__img img{transform:scale(1.05)}
+.sigcard__cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem .2rem 0}
+.sigcard__cap h3{font-size:clamp(1.15rem,1.7vw,1.5rem);font-weight:500;line-height:1.1}
+.sigcard__cap span{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-muted);white-space:nowrap}
+.sigcard--big{width:clamp(280px,36vw,520px)}
+.sig__end{flex:0 0 auto;width:min(70vw,420px);display:grid;place-items:center;text-align:center;padding:1rem}
+.sig__end h3{font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.05}
+.sig__end h3 em{color:var(--rose)}
+.sig__end p{color:var(--paper-muted);margin:.8rem 0 1.4rem}
+
+
+/* feature strip under the hero */
+.strip{background:var(--rose);color:#fff;position:relative;overflow:hidden}
+.strip::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 120% at 10% 50%,rgba(255,255,255,.14),transparent 60%)}
+.strip__grid{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:700px){.strip__grid{grid-template-columns:repeat(3,1fr)}}
+.strip__item{display:flex;align-items:center;gap:1rem;padding:1.3rem clamp(1rem,3vw,2rem);border-top:1px solid rgba(255,255,255,.18);position:relative}
+@media(min-width:700px){.strip__item{border-top:0;border-left:1px solid rgba(255,255,255,.18)}.strip__item:first-child{border-left:0}}
+.strip__item svg{width:34px;height:34px;flex:0 0 auto;stroke:#fff;fill:none;stroke-width:1.4}
+.strip__item strong{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:500;line-height:1.1}
+.strip__item span{font-size:.78rem;opacity:.85}
+
+/* soft rose glow drifting behind the light sections */
+.glow{position:relative;isolation:isolate}
+.glow::before,.glow::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none}
+.glow::before{width:44vw;height:44vw;left:-14vw;top:8%;background:radial-gradient(circle,rgba(230,58,85,.35),transparent 65%);animation:drift 18s ease-in-out infinite alternate}
+.glow::after{width:36vw;height:36vw;right:-10vw;bottom:6%;background:radial-gradient(circle,rgba(207,167,107,.35),transparent 65%);animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(6vw,-8vh) scale(1.15)}}
+
+/* how it works */
+.how{background:var(--paper);color:var(--paper-ink);padding:6rem 0;border-top:1px solid var(--paper-line)}
+.how__head{text-align:center;margin-bottom:3rem}
+.how__head .eyebrow{color:var(--rose)}
+.how__head h2{font-size:clamp(2.6rem,6vw,5.2rem);letter-spacing:-.02em;margin-top:.6rem}
+.how__head h2 em{color:var(--rose)}
+.how__grid{display:grid;gap:1.2rem}
+@media(min-width:800px){.how__grid{grid-template-columns:repeat(3,1fr);gap:1.6rem}}
+.how__step{background:#fff;border-radius:14px;padding:2rem 1.6rem 1.8rem;position:relative;overflow:hidden;box-shadow:0 20px 50px -30px rgba(28,15,18,.4);opacity:0;transform:translateY(30px)}
+.how__step.is-in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.how__step b{font-family:var(--serif);font-weight:400;font-size:5.5rem;line-height:.8;color:var(--rose);display:block;margin-bottom:1rem}
+.how__step h3{font-size:1.7rem;font-weight:500;margin-bottom:.5rem}
+.how__step p{color:var(--paper-muted);font-size:.95rem}
+.how__step::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(230,58,85,.18),transparent 70%)}
+.how__cta{text-align:center;margin-top:2.4rem}
+
+/* red filter chips + tinted card hover */
+.chip.is-on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.prod.is-in:hover{transform:translateY(-6px);box-shadow:0 28px 50px -22px rgba(196,19,47,.35)}
+.grid__head{color:var(--rose)}
+
+/* sticky WhatsApp bar on phones */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:850;display:none;padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom,0px));background:rgba(12,6,8,.9);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .5s var(--ease)}
+.stickybar.is-on{transform:none}
+.stickybar a{display:flex;align-items:center;justify-content:center;gap:.6rem;background:#25d366;color:#0b1d13;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:.95rem;border-radius:999px}
+.stickybar a svg{width:20px;height:20px}
+@media(max-width:899px){.stickybar{display:block}}
+
+/* shop */
+.shop{background:var(--paper);color:var(--paper-ink);padding:5rem 0 6rem;border-top:1px solid var(--paper-line);overflow:hidden}
+.shop__head{display:flex;align-items:end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.shop__head h2{font-size:clamp(2.6rem,6vw,5.4rem);letter-spacing:-.02em}
+.shop__head h2 em{color:var(--rose)}
+.shop__head p{color:var(--paper-muted);max-width:36ch}
+.filters{display:flex;gap:.5rem;overflow-x:auto;padding:.2rem .2rem 1rem;margin:0 -.2rem 1.6rem;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.filters::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:.75rem 1.1rem;border:1px solid var(--paper-line);border-radius:999px;color:var(--paper-muted);background:#fff;transition:all .3s var(--ease);min-height:44px}
+.chip:hover{border-color:var(--paper-ink);color:var(--paper-ink)}
+.chip.is-on{background:var(--paper-ink);color:#fff;border-color:var(--paper-ink)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+.grid__head{grid-column:1/-1;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;letter-spacing:-.01em;margin:1.6rem 0 .2rem;padding-top:1.2rem;border-top:1px solid var(--paper-line);display:flex;align-items:baseline;gap:.8rem}
+.grid__head:first-child{margin-top:0;padding-top:0;border-top:0}
+.grid__head::after{content:'';flex:1;height:1px;background:var(--paper-line)}
+.grid__head.is-hidden{display:none}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:1.2rem}}
+@media(min-width:1100px){.grid{grid-template-columns:repeat(4,1fr);gap:1.4rem}}
+.prod{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(30px);box-shadow:0 1px 0 var(--paper-line);transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+.prod.is-in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease),box-shadow .5s var(--ease)}
+.prod.is-in:hover{transform:translateY(-4px);box-shadow:0 24px 50px -20px rgba(28,15,18,.35)}
+.prod.is-hidden{display:none}
+.prod__img{aspect-ratio:4/5;display:grid;place-items:center;background:#fff;position:relative;overflow:hidden}
+.prod__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.prod__img.is-cut{padding:8%;background:radial-gradient(70% 60% at 50% 60%,#fff 0%,var(--paper-2) 100%)}
+.prod__img.is-cut img{object-fit:contain;filter:drop-shadow(0 18px 24px rgba(28,15,18,.22))}
+.prod:hover .prod__img img{transform:scale(1.05)}
+.prod__badge{position:absolute;top:.7rem;left:.7rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;background:var(--rose);color:#fff;padding:.35rem .6rem;border-radius:999px}
+.prod__body{padding:.9rem 1rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.prod__body h3{font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:500;line-height:1.1}
+.prod__body span{display:block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-muted);margin-top:.25rem;font-family:var(--sans)}
+.prod__body svg{width:22px;height:22px;flex:0 0 auto;color:var(--rose)}
+.shop__note{margin-top:2rem;color:var(--paper-muted);font-size:.8rem;text-align:center}
+
+/* occasions */
+.occ{position:relative}
+.occ__panel{position:sticky;top:0;height:100svh;display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.occ__panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.1)}
+.occ__panel::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(12,6,8,.95) 0%,rgba(12,6,8,.4) 50%,rgba(12,6,8,.15) 100%)}
+.occ__body{padding:0 clamp(1rem,4vw,3rem) clamp(3rem,8vh,6rem);max-width:1000px}
+.occ__body .eyebrow{display:block;margin-bottom:.8rem}
+.occ__body h2{font-size:clamp(3.2rem,11vw,9rem);letter-spacing:-.02em;line-height:.9}
+.occ__body p{margin-top:1.2rem;max-width:40ch;color:var(--cream);font-size:clamp(1rem,1.4vw,1.15rem)}
+.occ__body .btn{margin-top:1.6rem}
+
+/* schedule */
+.sched{padding:6rem 0;background:linear-gradient(var(--bg),var(--bg2))}
+.sched__head{text-align:center;margin-bottom:2.8rem}
+.sched__head h2{font-size:clamp(2.6rem,7vw,6rem);letter-spacing:-.02em;margin-top:.8rem}
+.sched__head p{color:var(--ink-2);max-width:40ch;margin:1rem auto 0}
+.sched__grid{display:grid;gap:1.5rem}
+.sched__grid>*{min-width:0}
+@media(min-width:1000px){.sched__grid{grid-template-columns:1.25fr .75fr;gap:2.5rem;align-items:start}}
+.panel{min-width:0;border:1px solid var(--line);border-radius:12px;padding:clamp(1.1rem,3vw,2.2rem);background:rgba(255,255,255,.02)}
+.step{padding:1.5rem 0;border-top:1px solid var(--line)}
+.step:first-child{border-top:0;padding-top:0}
+.step__head{display:flex;align-items:baseline;gap:.9rem;margin-bottom:1rem}
+.step__head b{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold);font-size:1.2rem}
+.step__head h3{font-size:1.5rem;font-weight:500}
+.step__hint{font-size:.8rem;color:var(--muted);margin:-.5rem 0 1rem}
+.seg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.6rem}
+.seg button{padding:.95rem;border:1px solid var(--line);border-radius:8px;text-align:left;transition:all .3s var(--ease);min-height:48px}
+.seg button strong{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:500}
+.seg button small{font-size:.7rem;color:var(--muted)}
+.seg button.is-on{border-color:var(--rose-2);background:rgba(196,19,47,.14)}
+.dates{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.6rem;scrollbar-width:none}
+.dates::-webkit-scrollbar{display:none}
+.date{flex:0 0 auto;width:64px;padding:.7rem .3rem;border:1px solid var(--line);border-radius:8px;text-align:center;transition:all .3s var(--ease)}
+.date small{display:block;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.date strong{display:block;font-family:var(--serif);font-size:1.6rem;font-weight:500;line-height:1.1}
+.date em{display:block;font-size:.58rem;font-style:normal;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.date.is-on{background:var(--cream);color:#000;border-color:var(--cream)}
+.date.is-on small,.date.is-on em{color:#6b4a3f}
+.date[disabled]{opacity:.3;cursor:not-allowed}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem}
+.slot{padding:.85rem .5rem;border:1px solid var(--line);border-radius:8px;font-size:.78rem;text-align:center;transition:all .3s var(--ease);min-height:48px}
+.slot.is-on{background:var(--rose);border-color:var(--rose);color:#fff}
+.slot[disabled]{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.fields{display:grid;gap:1rem}
+@media(min-width:640px){.fields{grid-template-columns:1fr 1fr}.fields .full{grid-column:1/-1}}
+.field label{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);margin-bottom:.4rem}
+.field input,.field textarea{width:100%;padding:.9rem 1rem;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:8px;color:var(--ink);font:inherit;font-size:1rem;min-height:48px}
+.field input:focus,.field textarea:focus{outline:0;border-color:var(--gold)}
+.field textarea{min-height:90px;resize:vertical}
+.field .err{display:none;color:var(--rose-2);font-size:.75rem;margin-top:.4rem}
+.field.is-err input,.field.is-err textarea{border-color:var(--rose-2)}
+.field.is-err .err{display:block}
+.sched__actions{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.6rem}
+.sched__actions p{font-size:.75rem;color:var(--muted);max-width:34ch}
+@media(max-width:520px){.sched__actions .btn{width:100%}}
+.summary{position:sticky;top:5.5rem}
+.summary__pick{display:flex;gap:1rem;align-items:center;padding-bottom:1.1rem;border-bottom:1px solid var(--line);margin-bottom:1.1rem}
+.summary__pick .thumb{width:78px;height:96px;border-radius:8px;background:var(--paper);display:grid;place-items:center;overflow:hidden;flex:0 0 auto}
+.summary__pick .thumb img{width:100%;height:100%;object-fit:cover}
+.summary__pick .thumb.is-cut img{object-fit:contain;padding:6px}
+.summary__pick h4{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.1}
+.summary__pick p{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:.3rem}
+.summary__pick button{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;border-bottom:1px solid var(--line)}
+.summary dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem;font-size:.9rem}
+.summary dt{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding-top:.2rem}
+.summary dd{color:var(--cream)}
+.summary__note{margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+.done{display:none;text-align:center;padding:1.5rem 0}
+.done.is-on{display:block}
+.done h3{font-size:clamp(2rem,4vw,3rem)}
+.done p{color:var(--ink-2);margin:.8rem auto 1.4rem;max-width:40ch}
+.done__btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.done pre{white-space:pre-wrap;text-align:left;font:.85rem/1.6 var(--sans);color:var(--cream);background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:8px;padding:1.1rem;margin:1.2rem 0}
+
+/* visit + footer */
+.visit{padding:6rem 0;border-top:1px solid var(--line)}
+.visit__grid{display:grid;gap:2.5rem}
+@media(min-width:900px){.visit__grid{grid-template-columns:1fr 1fr;align-items:center}}
+.visit h2{font-size:clamp(2.6rem,6vw,5rem);letter-spacing:-.02em;margin-top:.8rem}
+.visit__list{display:grid;gap:1.2rem;margin-top:1.8rem}
+.visit__list a,.visit__list div{display:flex;gap:1rem;align-items:flex-start;font-size:1.05rem;color:var(--cream);min-height:44px}
+.visit__list svg{width:20px;height:20px;flex:0 0 auto;margin-top:.2rem;color:var(--gold)}
+.visit__list small{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.1rem}
+.visit__media{aspect-ratio:4/5;border-radius:12px;overflow:hidden}
+.visit__media img{width:100%;height:100%;object-fit:cover}
+.foot{padding:2.5rem 0;border-top:1px solid var(--line);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.foot .wrap{display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;align-items:center}
+.foot__big{font-family:var(--serif);letter-spacing:-.02em;text-transform:none;font-size:clamp(2.6rem,10vw,9rem);line-height:.85;color:var(--ink);padding-bottom:1.6rem}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:1rem;background:rgba(6,3,4,.86);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+.lb.is-on{opacity:1;visibility:visible}
+.lb__box{display:grid;gap:1.2rem;width:min(960px,100%);max-height:92svh;overflow:auto;background:var(--paper);color:var(--paper-ink);border-radius:14px;padding:1rem;transform:translateY(30px) scale(.98);transition:transform .6s var(--ease)}
+.lb.is-on .lb__box{transform:none}
+@media(min-width:800px){.lb__box{grid-template-columns:1.05fr .95fr;padding:1.2rem}}
+.lb__img{aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:#fff;display:grid;place-items:center}
+.lb__img img{width:100%;height:100%;object-fit:cover}
+.lb__img.is-cut{padding:6%;background:radial-gradient(70% 60% at 50% 60%,#fff 0%,var(--paper-2) 100%)}
+.lb__img.is-cut img{object-fit:contain;filter:drop-shadow(0 30px 40px rgba(28,15,18,.28))}
+.lb__body{display:flex;flex-direction:column;justify-content:center;padding:.4rem}
+.lb__body .eyebrow{color:var(--rose)}
+.lb__body h3{font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin:.5rem 0 .9rem}
+.lb__body p{color:var(--paper-muted);max-width:40ch}
+.lb__opts{margin:1.2rem 0 1.4rem}
+.lb__opts label{display:block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-muted);margin-bottom:.5rem}
+.lb__opts div{display:flex;gap:.5rem;flex-wrap:wrap}
+.opt{font-size:.75rem;padding:.6rem .9rem;border:1px solid var(--paper-line);border-radius:999px;background:#fff;min-height:44px;transition:all .3s}
+.opt.is-on{background:var(--paper-ink);color:#fff;border-color:var(--paper-ink)}
+.lb__actions{display:grid;gap:.6rem}
+@media(min-width:800px){.lb__actions{grid-template-columns:1fr 1fr}}
+.lb__actions .btn{width:100%}
+.lb__price{font-size:.78rem;color:var(--paper-muted);margin-top:1rem;line-height:1.5}
+.lb__close{position:absolute;top:1rem;right:1rem;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:rgba(12,6,8,.7);color:#fff}
+.lb__close svg{width:18px;height:18px}
+@media(max-width:800px){.lb__body .btn{width:100%}}
+
+.toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,120%);z-index:9600;background:var(--cream);color:#000;padding:.9rem 1.4rem;border-radius:999px;font-size:.8rem;transition:transform .5s var(--ease);max-width:calc(100% - 2rem);text-align:center}
+.toast.is-on{transform:translate(-50%,0)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero__inner .eyebrow,.hero__sub,.hero__btns,.hero__title .l{opacity:1!important;transform:none!important}
+  .prod,.how__step{opacity:1;transform:none}
+  .glow::before,.glow::after{animation:none}
+  .sig__pin{height:auto}
+  .sig__track{width:auto;overflow-x:auto}
+  .occ__panel{position:relative;height:auto;min-height:70svh}
+}
+
+/* ===================== LIGHT THEME (white, clean) ===================== */
+:root{--bg:#ffffff;--bg2:#fbf7f4;--ink:#161012;--ink-2:#5f4f52;--muted:#8a7a7d;--cream:#161012;--line:rgba(22,16,18,.12);--paper:#ffffff;--paper-2:#f7f1ee;--paper-ink:#161012;--paper-muted:#6b5c5f;--paper-line:rgba(22,16,18,.1)}
+body{background:#fff;color:var(--ink)}
+body::after{display:none}
+.loader{background:#fff}.loader__mark{color:var(--rose);box-shadow:0 0 0 1px var(--line)}.loader p{color:var(--muted)}
+.nav{color:var(--ink)}.nav.is-solid{background:rgba(255,255,255,.9);color:var(--ink);border-bottom:1px solid var(--line)}
+.nav__cta{background:var(--rose);color:#fff}
+.btn{border-color:var(--ink);color:var(--ink)}.btn:hover{color:#fff}.btn--solid{background:var(--rose);border-color:var(--rose);color:#fff}
+em{color:var(--rose)}
+.hero{background:#fff;color:var(--ink);min-height:min(92svh,860px)}
+.hero__media{inset:10% 4% 6% 50%;display:grid;place-items:center}
+.hero__media img{object-fit:contain;filter:drop-shadow(0 34px 44px rgba(120,20,40,.22))}
+.hero__veil{background:radial-gradient(45% 45% at 74% 50%,rgba(230,58,85,.14),transparent 70%)}
+.hero__title{text-shadow:none;color:var(--ink)}
+.hero__sub{color:var(--ink-2)}
+.hero .eyebrow{color:var(--rose)}
+@media(max-width:899px){.hero{grid-template-rows:auto auto;min-height:0}.hero__media{position:relative;inset:auto;height:52svh;padding:5.5rem 1.5rem 0}.hero__veil{background:radial-gradient(50% 30% at 50% 34%,rgba(230,58,85,.14),transparent 70%)}.hero__inner{padding-top:0;margin-top:-1rem}}
+.strip{background:var(--rose)}
+.sig,.shop,.how{background:#fff}
+.glow::before,.glow::after{opacity:.35}
+.grid__head{color:var(--ink)}.grid__head em{color:var(--rose)}
+.prod{box-shadow:0 1px 0 var(--line);border:1px solid var(--line)}
+.chip{background:#fff;border-color:var(--line);color:var(--ink-2)}.chip.is-on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.occ2{background:var(--bg2);padding:6rem 0}
+.occ2__head{text-align:center;margin-bottom:2.6rem}.occ2__head .eyebrow{color:var(--rose)}
+.occ2__head h2{font-size:clamp(2.4rem,5.5vw,4.6rem);letter-spacing:-.02em;margin-top:.6rem}
+.occ2__grid{display:grid;gap:1.2rem}@media(min-width:800px){.occ2__grid{grid-template-columns:repeat(3,1fr);gap:1.6rem}}
+.occ2__card{display:block;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.occ2__card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -24px rgba(196,19,47,.3)}
+.occ2__img{aspect-ratio:4/3;overflow:hidden}.occ2__img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.occ2__card:hover .occ2__img img{transform:scale(1.05)}
+.occ2__body{padding:1.3rem 1.4rem 1.5rem}.occ2__body h3{font-size:1.9rem;font-weight:500;line-height:1.05}
+.occ2__body p{color:var(--ink-2);font-size:.95rem;margin:.5rem 0 .9rem}
+.occ2__link{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--rose)}
+.how{background:#fff}.how__step{border:1px solid var(--line)}
+.sched{background:var(--bg2);color:var(--ink)}
+.panel{background:#fff;border:1px solid var(--line)}
+.step__head b{color:var(--rose)}
+.seg button,.date,.slot{border-color:var(--line);background:#fff;color:var(--ink)}
+.seg button small,.date small,.date em{color:var(--muted)}
+.seg button.is-on{border-color:var(--rose);background:rgba(196,19,47,.08)}
+.date.is-on{background:var(--ink);color:#fff;border-color:var(--ink)}.date.is-on small,.date.is-on em{color:rgba(255,255,255,.7)}
+.slot.is-on{background:var(--rose);border-color:var(--rose);color:#fff}
+.field input,.field textarea{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.field label{color:var(--ink-2)}
+.summary dd,.summary__pick h4{color:var(--ink)}.summary__pick p{color:var(--rose)}
+.summary__note a{color:var(--ink)!important}
+.done pre{background:var(--bg2);color:var(--ink);border-color:var(--line)}
+.visit{background:#fff;border-top:1px solid var(--line)}
+.visit__list a,.visit__list div{color:var(--ink)}.visit__list svg{color:var(--rose)}
+.foot{background:var(--bg2);border-top:1px solid var(--line);color:var(--muted)}
+.foot__big{color:var(--ink)}
+.toast{background:var(--ink);color:#fff}
+.stickybar{background:rgba(255,255,255,.94);border-top:1px solid var(--line)}
+.lb{background:rgba(255,255,255,.75)}.lb__box{border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(22,16,18,.35)}
+.lb__close{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sched__head p,.shop__head p,.sig__head p,.how__step p{color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div>
+    <div class="loader__mark"><img src="assets/instagram/logo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+    <p>Miami</p>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top"><img src="assets/instagram/logo.jpg" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:cover"><span class="nav__name">La Diosa Flowers</span></a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#shop">Arrangements</a>
+    <a href="#occasions">Occasions</a>
+    <a href="#schedule">Delivery</a>
+    <a href="#visit">Contact</a>
+  </nav>
+  <a class="nav__cta" href="#shop">Order now</a>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <img src="assets/customer/hero2.png" alt="Red roses with baby's breath and eucalyptus in our red wrap" fetchpriority="high">
+  </div>
+  <div class="hero__veil"></div>
+  <div class="hero__inner">
+    <p class="eyebrow">Miami · Hand-tied roses</p>
+    <h1 class="hero__title" aria-label="La Diosa Flowers"><span class="w">La</span> <em class="w">Diosa</em><br><span class="w">Flowers</span></h1>
+    <p class="hero__sub">Fresh flowers, made by hand in Miami. Pick one, choose your delivery time, done.</p>
+    <div class="hero__btns">
+      <a class="btn btn--solid" href="#shop">See arrangements <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn" href="#schedule">Schedule delivery</a>
+    </div>
+  </div>
+</section>
+<div class="strip" aria-label="Why us">
+  <div class="strip__grid">
+    <div class="strip__item"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><div><strong>Same-day in Miami</strong><span>Order before 2 PM, pick your time window.</span></div></div>
+    <div class="strip__item"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg><div><strong>Made by hand</strong><span>Every bouquet built fresh the day it goes out.</span></div></div>
+    <div class="strip__item"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg><div><strong>Order on WhatsApp</strong><span>Two taps. We confirm price and time with you.</span></div></div>
+  </div>
+</div>
+
+<!-- SIGNATURE (pinned sideways gallery) -->
+<section class="sig glow" id="featured">
+  <div class="sig__pin">
+    <div class="sig__head">
+      <div><p class="eyebrow">Made by us</p><h2>Roses by the <em>hundred</em></h2></div>
+      <p>A few of our favorites, all made by hand in Miami. Keep scrolling to see more, tap one to order it.</p>
+    </div>
+    <div class="sig__track" id="sigTrack">
+      <figure class="sigcard sigcard--big" data-item="c051">
+        <div class="sigcard__img"><img src="assets/customer/cards/c051.jpg" alt="100 red roses" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>100 red roses</h3><span>Hand-tied</span></figcaption>
+      </figure>
+      <figure class="sigcard" data-item="c045">
+        <div class="sigcard__img"><img src="assets/customer/cards/c045.jpg" alt="Red roses, white lace" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>Red roses, white lace</h3><span>Hand-tied</span></figcaption>
+      </figure>
+      <figure class="sigcard" data-item="c101">
+        <div class="sigcard__img"><img src="assets/customer/cards/c101.jpg" alt="100 blue roses" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>100 blue roses</h3><span>Hand-tied</span></figcaption>
+      </figure>
+      <figure class="sigcard sigcard--big" data-item="c093">
+        <div class="sigcard__img"><img src="assets/customer/cards/c093.jpg" alt="Hot pink roses" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>Hot pink roses</h3><span>Hand-tied</span></figcaption>
+      </figure>
+      <figure class="sigcard" data-item="c113">
+        <div class="sigcard__img"><img src="assets/customer/cards/c113.jpg" alt="Red roses & eucalyptus" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>Red roses & eucalyptus</h3><span>Red wrap</span></figcaption>
+      </figure>
+      <figure class="sigcard" data-item="c058">
+        <div class="sigcard__img"><img src="assets/customer/cards/c058.jpg" alt="Lavender roses" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>Lavender roses</h3><span>Purple wrap</span></figcaption>
+      </figure>
+      <figure class="sigcard sigcard--big" data-item="c235">
+        <div class="sigcard__img"><img src="assets/customer/cards/c235.jpg" alt="White roses & blue" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>White roses & blue</h3><span>Blue wrap</span></figcaption>
+      </figure>
+      <figure class="sigcard" data-item="c137">
+        <div class="sigcard__img"><img src="assets/customer/cards/c137.jpg" alt="Yellow roses & mums" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>Yellow roses & mums</h3><span>Orange wrap</span></figcaption>
+      </figure>
+      <figure class="sigcard" data-item="c212">
+        <div class="sigcard__img"><img src="assets/customer/cards/c212.jpg" alt="Red roses, pearl bows" loading="lazy"></div>
+        <figcaption class="sigcard__cap"><h3>Red roses, pearl bows</h3><span>Red wrap</span></figcaption>
+      </figure>
+      <div class="sig__end">
+        <div>
+          <h3>Ninety more <em>in the shop.</em></h3>
+          <p>Every color, wrapped, in a vase, or built for an event.</p>
+          <a class="btn btn--dark" href="#shop">See them all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop glow" id="shop">
+  <div class="wrap">
+    <div class="shop__head">
+      <h2>Arrange<em>ments</em></h2>
+      <p>Every one of these was made by us. Tap one to see it up close and order it.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter">
+      <button class="chip is-on" data-f="all">All</button>
+      <button class="chip" data-f="bouquet">Wrapped bouquets</button>
+      <button class="chip" data-f="vase">Vases &amp; boxes</button>
+      <button class="chip" data-f="event">Events &amp; stands</button>
+      <button class="chip" data-f="hundred">100-rose collection</button>
+      <button class="chip" data-f="red">Red</button>
+      <button class="chip" data-f="pink">Pink</button>
+      <button class="chip" data-f="purple">Purple</button>
+      <button class="chip" data-f="white">White &amp; cream</button>
+      <button class="chip" data-f="yellow">Sunflowers &amp; yellow</button>
+      <button class="chip" data-f="blue">Blue</button>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="shop__note">Prices are confirmed on the call, never a surprise. Flowers change with the season, so yours may vary a little.</p>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="occ2" id="occasions">
+  <div class="wrap">
+    <div class="occ2__head"><p class="eyebrow">Occasions</p><h2>Flowers for <em>every day</em> that matters.</h2></div>
+    <div class="occ2__grid">
+      <a class="occ2__card" href="#" data-wa="Hi La Diosa Flowers! I'd like to ask about flowers for a wedding." target="_blank" rel="noopener">
+        <div class="occ2__img"><img src="assets/occasions/wedding.jpg" alt="An outdoor wedding ceremony aisle lined with white flowers" loading="lazy"></div>
+        <div class="occ2__body"><h3>Weddings</h3><p>Bridal bouquets, ceremony and table flowers, all designed to match.</p><span class="occ2__link">Ask about a wedding →</span></div>
+      </a>
+      <a class="occ2__card" href="#" data-wa="Hi La Diosa Flowers! I'd like to ask about flowers for an event." target="_blank" rel="noopener">
+        <div class="occ2__img"><img src="assets/occasions/event.jpg" alt="An event room decorated with pink and red floral centerpieces" loading="lazy"></div>
+        <div class="occ2__body"><h3>Events</h3><p>Quinces, showers, birthdays, corporate dinners. Centerpieces built on site.</p><span class="occ2__link">Ask about an event →</span></div>
+      </a>
+      <a class="occ2__card" href="#schedule">
+        <div class="occ2__img"><img src="assets/occasions/everyday.jpg" alt="A delivery driver handing a bouquet of red and white roses to a smiling customer" loading="lazy"></div>
+        <div class="occ2__body"><h3>Everyday delivery</h3><p>A Tuesday. An apology. A thank you. Pick a time and we bring it to the door.</p><span class="occ2__link">Schedule delivery →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how glow" id="how">
+  <div class="wrap">
+    <div class="how__head">
+      <p class="eyebrow">Simple</p>
+      <h2>Three steps, <em>then flowers.</em></h2>
+    </div>
+    <div class="how__grid">
+      <div class="how__step"><b>1</b><h3>Pick a bouquet</h3><p>Tap any arrangement above. Choose 25, 50 or 100 roses.</p></div>
+      <div class="how__step"><b>2</b><h3>Message us</h3><p>One tap opens WhatsApp with your order typed in. Or pick a delivery time below.</p></div>
+      <div class="how__step"><b>3</b><h3>We deliver</h3><p>We confirm the price and bring it to the door in your time window.</p></div>
+    </div>
+    <div class="how__cta"><a class="btn btn--solid" href="#shop">Start with a bouquet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="sched" id="schedule">
+  <div class="wrap">
+    <div class="sched__head">
+      <p class="eyebrow">Delivery &amp; pickup</p>
+      <h2>Pick your <em>time.</em></h2>
+      <p>Pick a day and a time window, leave your number, and tap send. Or skip this and message us on WhatsApp from any bouquet.</p>
+    </div>
+    <div class="sched__grid">
+      <form class="panel" id="form" novalidate>
+        <div class="step">
+          <div class="step__head"><b>1</b><h3>Delivery or pickup?</h3></div>
+          <div class="seg" id="mode">
+            <button type="button" class="is-on" data-mode="delivery"><strong>Delivery</strong><small>To any address in Miami</small></button>
+            <button type="button" data-mode="pickup"><strong>Pickup</strong><small>Collect it from us</small></button>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__head"><b>2</b><h3>Which day?</h3></div>
+          <p class="step__hint">Same-day orders close at <span id="cutoffLabel"></span>.</p>
+          <div class="dates" id="dates" role="group" aria-label="Choose a day"></div>
+        </div>
+        <div class="step">
+          <div class="step__head"><b>3</b><h3>What time?</h3></div>
+          <div class="slots" id="slots" role="group" aria-label="Choose a time window"></div>
+        </div>
+        <div class="step">
+          <div class="step__head"><b>4</b><h3>Your details</h3></div>
+          <div class="fields">
+            <div class="field"><label for="fName">Your name *</label><input id="fName" name="name" autocomplete="name" required><p class="err">Please add your name.</p></div>
+            <div class="field"><label for="fPhone">Phone *</label><input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required><p class="err">We need a number to confirm.</p></div>
+            <div class="field full" id="addrField"><label for="fAddr">Delivery address *</label><input id="fAddr" name="address" autocomplete="street-address" placeholder="Street, city, ZIP, apartment or gate code"><p class="err">Where should we deliver?</p></div>
+            <div class="field full"><label for="fCard">Card message (optional)</label><input id="fCard" name="card" placeholder="What should the card say?"></div>
+            <div class="field full"><label for="fNote">Anything else? (optional)</label><textarea id="fNote" name="note" placeholder="Colors, size, occasion, budget…"></textarea></div>
+          </div>
+        </div>
+        <div class="sched__actions">
+          <button class="btn btn--solid" type="submit">Send my order <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p>No payment now. We call or text to confirm the flowers, the price and the time.</p>
+        </div>
+        <div class="done" id="done" aria-live="polite">
+          <h3>Almost <em>there.</em></h3>
+          <p>Tap one button to send it to us. We'll confirm your time window.</p>
+          <pre id="doneText"></pre>
+          <div class="done__btns">
+            <a class="btn btn--solid" id="waLink" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+            <a class="btn" id="smsLink" href="#">Send as text</a>
+          </div>
+        </div>
+      </form>
+      <aside class="panel summary" aria-label="Order summary">
+        <p class="eyebrow" style="margin-bottom:1rem">Your order</p>
+        <div class="summary__pick" id="pick">
+          <div class="thumb" id="pickThumb"><img id="pickImg" src="assets/customer/cards/c051.jpg" alt=""></div>
+          <div>
+            <h4 id="pickName">Let us choose</h4>
+            <p id="pickTag">Florist's choice</p>
+            <button type="button" id="pickChange">Change arrangement</button>
+          </div>
+        </div>
+        <dl>
+          <dt>How</dt><dd id="sMode">Delivery</dd>
+          <dt>Day</dt><dd id="sDate">—</dd>
+          <dt>Time</dt><dd id="sSlot">—</dd>
+          <dt>Size</dt><dd id="sSize">Let us suggest</dd>
+        </dl>
+        <p class="summary__note">Questions? Call or text <a href="tel:+13057804858" style="color:var(--cream);border-bottom:1px solid var(--line)">(305) 780-4858</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap visit__grid">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Talk to <em>us.</em></h2>
+      <div class="visit__list">
+        <a href="tel:+13057804858"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><small>Call or text</small>(305) 780-4858</span></a>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><small>Where</small>Miami, Florida · Delivery &amp; pickup</span></div>
+        <a href="https://www.instagram.com/ladiosaflowers/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg><span><small>Instagram</small>@ladiosaflowers</span></a>
+        <a href="https://www.tiktok.com/@ladiosaflowers" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5M14 4c0 2.5 2 4.5 4.5 4.5"/></svg><span><small>TikTok</small>@ladiosaflowers</span></a>
+      </div>
+    </div>
+    <figure class="visit__media">
+      <img src="assets/customer/cards/c093.jpg" alt="Hot pink roses with baby's breath in a white net wrap" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap" style="display:block">
+    <p class="foot__big">La <em>Diosa</em> Flowers</p>
+  </div>
+  <div class="wrap">
+    <span>© <span id="year"></span> La Diosa Flowers · Miami</span>
+    <span>Hand-tied in Miami</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb__box">
+    <div class="lb__img" id="lbImgWrap"><img id="lbImg" alt=""></div>
+    <div class="lb__body">
+      <p class="eyebrow" id="lbTag"></p>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <div class="lb__opts" id="lbOpts">
+        <label>How many roses?</label>
+        <div id="sizes"></div>
+      </div>
+      <div class="lb__actions">
+        <a class="btn btn--solid" id="lbWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2 .6 2.7.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg> Order on WhatsApp</a>
+        <button class="btn btn--dark" id="lbPick" type="button">Pick a delivery time <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <p class="lb__price">No payment online. We confirm the price and time with you on WhatsApp or by phone. Or call <a href="tel:+13057804858" style="color:var(--paper-ink);border-bottom:1px solid currentColor">(305) 780-4858</a>.</p>
+    </div>
+  </div>
+  <button class="lb__close" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="stickybar" id="stickybar"><a href="#" data-wa="Hi La Diosa Flowers! I'd like to order some flowers." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2 .6 2.7.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg> Order on WhatsApp</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+/* =========================================================
+   SHOP SETTINGS — edit these, nothing else needs to change
+   ========================================================= */
+const SHOP = {
+  phoneE164: '13057804858',            // for WhatsApp / SMS links
+  daysAhead: 14,                        // how far ahead people can book
+  sameDayCutoffHour: 14,                // 14 = 2:00 PM. After this, today disappears
+  closedWeekdays: [],                   // 0 = Sunday … 6 = Saturday. Example: [0]
+  sizes: ['Let us suggest', '25 roses', '50 roses', '100 roses'],   // shown on rose arrangements
+  deliverySlots: [
+    { label: '9:00 – 11:00 AM', start: 9 },
+    { label: '11:00 AM – 1:00 PM', start: 11 },
+    { label: '1:00 – 3:00 PM', start: 13 },
+    { label: '3:00 – 5:00 PM', start: 15 },
+    { label: '5:00 – 7:00 PM', start: 17 }
+  ],
+  pickupSlots: [
+    { label: '10:00 – 11:00 AM', start: 10 },
+    { label: '11:00 AM – 12:00 PM', start: 11 },
+    { label: '12:00 – 1:00 PM', start: 12 },
+    { label: '1:00 – 2:00 PM', start: 13 },
+    { label: '2:00 – 3:00 PM', start: 14 },
+    { label: '3:00 – 4:00 PM', start: 15 },
+    { label: '4:00 – 5:00 PM', start: 16 },
+    { label: '5:00 – 6:00 PM', start: 17 }
+  ]
+};
+
+/* =========================================================
+   ARRANGEMENTS. "ours: true" = your own photo (cut out).
+   Types: bouquet, box, basket, vase
+   ========================================================= */
+const ITEMS = [
+  // Made by us — real arrangements
+  { id:'c051', name:"100 red roses", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c051.jpg', desc:"A hundred red roses, hand-tied tight and round.", alt:"100 red roses" },
+  { id:'c054', name:"Red roses, red wrap", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c054.jpg', desc:"Red roses with greenery in our red wrap.", alt:"Red roses, red wrap" },
+  { id:'c045', name:"Red roses, white lace", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c045.jpg', desc:"Red roses with silver accents in a white lace wrap.", alt:"Red roses, white lace" },
+  { id:'c014', name:"Red roses, red wrap, small", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c014.jpg', desc:"A smaller red rose bouquet in the red wrap.", alt:"Red roses, red wrap, small" },
+  { id:'c018', name:"Red roses & baby's breath", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c018.jpg', desc:"Red roses with baby's breath in a purple wrap.", alt:"Red roses & baby's breath" },
+  { id:'c028', name:"Red roses, pink net", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c028.jpg', desc:"Red roses with baby's breath in a pink net wrap.", alt:"Red roses, pink net" },
+  { id:'c029', name:"Red roses, white net", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c029.jpg', desc:"Red roses in a white net wrap with red ribbon.", alt:"Red roses, white net" },
+  { id:'c040', name:"Red roses, gold accents", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c040.jpg', desc:"Red roses with gold leaves in a red net wrap.", alt:"Red roses, gold accents" },
+  { id:'c043', name:"Red roses, gold wrap", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c043.jpg', desc:"Red roses in a gold wrap with ribbon.", alt:"Red roses, gold wrap" },
+  { id:'c066', name:"Red roses & white accents", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c066.jpg', desc:"Red roses with white accents in the red wrap.", alt:"Red roses & white accents" },
+  { id:'c083', name:"Red roses & blue thistle", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c083.jpg', desc:"Red roses with blue thistle and purple statice in a red wrap.", alt:"Red roses & blue thistle" },
+  { id:'c027', name:"Red roses, close and full", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c027.jpg', desc:"Red roses packed close with greenery.", alt:"Red roses, close and full" },
+  { id:'c056', name:"Red, white & blue roses", group:'red', tags:'bouquet blue red ours', roses:true, img:'assets/customer/cards/c056.jpg', desc:"Red, white and blue roses together.", alt:"Red, white & blue roses" },
+  { id:'c104', name:"Red roses, black wrap", group:'red', tags:'bouquet red purple ours', roses:true, img:'assets/customer/cards/c104.jpg', desc:"Red roses with purple accents in a black wrap.", alt:"Red roses, black wrap" },
+  { id:'c110', name:"Red roses & pink lilies", group:'red', tags:'bouquet red pink ours', roses:true, img:'assets/customer/cards/c110.jpg', desc:"Red roses with pink lilies and baby's breath in a red wrap.", alt:"Red roses & pink lilies" },
+  { id:'c113', name:"Red roses & eucalyptus, red wrap", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c113.jpg', desc:"Red roses with baby's breath and eucalyptus in the red wrap.", alt:"Red roses & eucalyptus, red wrap" },
+  { id:'c127', name:"Red & pink roses, red wrap", group:'red', tags:'bouquet red pink ours', roses:true, img:'assets/customer/cards/c127.jpg', desc:"Red and pink roses with baby's breath in the red wrap.", alt:"Red & pink roses, red wrap" },
+  { id:'c202', name:"Red roses & purple, heart", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c202.jpg', desc:"Red roses with purple accents and a glitter heart in the red wrap.", alt:"Red roses & purple, heart" },
+  { id:'c204', name:"Red roses, red wrap, glitter", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c204.jpg', desc:"Red roses with a gold glitter accent in the red wrap.", alt:"Red roses, red wrap, glitter" },
+  { id:'c205', name:"Red roses & pink tulips", group:'red', tags:'bouquet red pink ours', roses:true, img:'assets/customer/cards/c205.jpg', desc:"Red roses with pink tulips and baby's breath in the red wrap.", alt:"Red roses & pink tulips" },
+  { id:'c212', name:"Red roses, pearl bows", group:'red', tags:'bouquet red ours', roses:true, img:'assets/customer/cards/c212.jpg', desc:"Red roses with pearl bows in the red wrap.", alt:"Red roses, pearl bows" },
+  { id:'c239', name:"Red & white roses, red wrap", group:'red', tags:'bouquet red white ours', roses:true, img:'assets/customer/cards/c239.jpg', desc:"Red and white roses in the red wrap.", alt:"Red & white roses, red wrap" },
+  { id:'c025', name:"Red roses on a stand", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c025.jpg', desc:"Red roses with baby's breath in the red wrap, in a vase.", alt:"Red roses on a stand" },
+  { id:'c064', name:"Red roses in a vase", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c064.jpg', desc:"Red roses with greenery, red wrap, in a clear vase.", alt:"Red roses in a vase" },
+  { id:'c055', name:"Red roses & white daisies", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c055.jpg', desc:"Red roses with white daisies.", alt:"Red roses & white daisies" },
+  { id:'c049', name:"Red roses & green hydrangea", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c049.jpg', desc:"Red roses with green hydrangea in a vase with ribbon.", alt:"Red roses & green hydrangea" },
+  { id:'c080', name:"Red roses & eucalyptus", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c080.jpg', desc:"Red roses with eucalyptus in a vase, with a heart.", alt:"Red roses & eucalyptus" },
+  { id:'c084', name:"Red roses, white box", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c084.jpg', desc:"Red roses in a white box with a pink ribbon.", alt:"Red roses, white box" },
+  { id:'c031', name:"Red roses & greens", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c031.jpg', desc:"Red roses with greenery and white accents.", alt:"Red roses & greens" },
+  { id:'c038', name:"Red roses & white lilies", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c038.jpg', desc:"Red roses with white lilies and purple statice.", alt:"Red roses & white lilies" },
+  { id:'c078', name:"Red & orange arrangement", group:'red', tags:'vase red mixed ours', roses:false, img:'assets/customer/cards/c078.jpg', desc:"Red roses with orange and yellow blooms.", alt:"Red & orange arrangement" },
+  { id:'c103', name:"Blue, yellow & red roses", group:'red', tags:'vase blue yellow red mixed ours', roses:true, img:'assets/customer/cards/c103.jpg', desc:"Blue, yellow and red roses with baby's breath.", alt:"Blue, yellow & red roses" },
+  { id:'c124', name:"Red roses, holiday", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c124.jpg', desc:"Red roses with greenery and a festive ribbon.", alt:"Red roses, holiday" },
+  { id:'c150', name:"Burgundy & mauve, tall", group:'red', tags:'vase purple red ours', roses:true, img:'assets/customer/cards/c150.jpg', desc:"Burgundy and mauve roses with trailing greens.", alt:"Burgundy & mauve, tall" },
+  { id:'c151', name:"Red, pink & burgundy roses", group:'red', tags:'vase red pink ours', roses:true, img:'assets/customer/cards/c151.jpg', desc:"Red, pink and burgundy roses with greenery.", alt:"Red, pink & burgundy roses" },
+  { id:'c214', name:"Red roses & gladiolus, tall", group:'red', tags:'vase red ours', roses:true, img:'assets/customer/cards/c214.jpg', desc:"Red roses with gladiolus and greenery in a tall arrangement.", alt:"Red roses & gladiolus, tall" },
+  { id:'c106', name:"Red & mauve roses, black wrap", group:'red', tags:'event red purple ours', roses:true, img:'assets/customer/cards/c106.jpg', desc:"Red and mauve roses with purple blooms in a black wrap, on a stand.", alt:"Red & mauve roses, black wrap" },
+  { id:'c107', name:"Red roses on a marble stand", group:'red', tags:'event red ours', roses:true, img:'assets/customer/cards/c107.jpg', desc:"Red roses with greenery and a pink ribbon, on a marble stand.", alt:"Red roses on a marble stand" },
+  { id:'c131', name:"Pink & red table piece", group:'red', tags:'event pink red ours', roses:true, img:'assets/customer/cards/c131.jpg', desc:"Pink and red roses in a low table piece.", alt:"Pink & red table piece" },
+  { id:'c141', name:"Red rose heart", group:'red', tags:'event red ours', roses:true, img:'assets/customer/cards/c141.jpg', desc:"A heart of red roses with baby's breath and a red ribbon.", alt:"Red rose heart" },
+  { id:'c207', name:"Red & pink roses, trailing", group:'red', tags:'event red pink ours', roses:true, img:'assets/customer/cards/c207.jpg', desc:"Red and pink roses with trailing amaranth on a stand.", alt:"Red & pink roses, trailing" },
+  { id:'c093', name:"Hot pink roses, white net", group:'pink', tags:'bouquet pink ours', roses:true, img:'assets/customer/cards/c093.jpg', desc:"Hot pink roses with baby's breath in a white net wrap.", alt:"Hot pink roses, white net" },
+  { id:'c098', name:"Hot pink roses, red wrap", group:'pink', tags:'bouquet pink ours', roses:true, img:'assets/customer/cards/c098.jpg', desc:"Hot pink roses in a red wrap.", alt:"Hot pink roses, red wrap" },
+  { id:'c123', name:"Pink roses, pink wrap", group:'pink', tags:'bouquet pink ours', roses:true, img:'assets/customer/cards/c123.jpg', desc:"Pink roses and mixed blooms in a pink wrap with a bow.", alt:"Pink roses, pink wrap" },
+  { id:'c146', name:"Pink roses, pastel wrap", group:'pink', tags:'bouquet pink ours', roses:true, img:'assets/customer/cards/c146.jpg', desc:"Pink roses and mixed blooms in a pastel wrap.", alt:"Pink roses, pastel wrap" },
+  { id:'c152', name:"Pink roses, pink wrap II", group:'pink', tags:'bouquet pink ours', roses:true, img:'assets/customer/cards/c152.jpg', desc:"Pink roses and blooms in a soft pink wrap.", alt:"Pink roses, pink wrap II" },
+  { id:'c217', name:"Pink roses with teddy bear", group:'pink', tags:'bouquet pink ours', roses:true, img:'assets/customer/cards/c217.jpg', desc:"Pink roses with a teddy bear in a pink net wrap.", alt:"Pink roses with teddy bear" },
+  { id:'c034', name:"Pink & red roses", group:'pink', tags:'vase pink ours', roses:true, img:'assets/customer/cards/c034.jpg', desc:"Pink and red roses with baby's breath.", alt:"Pink & red roses" },
+  { id:'c001', name:"Pink & white roses, white vase", group:'pink', tags:'vase pink ours', roses:true, img:'assets/customer/cards/c001.jpg', desc:"Pink and white roses in a white vase with a pink bow.", alt:"Pink & white roses, white vase" },
+  { id:'c003', name:"Peach roses & hydrangea", group:'pink', tags:'vase pink ours', roses:false, img:'assets/customer/cards/c003.jpg', desc:"Peach roses with white hydrangea and pink blooms.", alt:"Peach roses & hydrangea" },
+  { id:'c006', name:"Pink lilies & hydrangea", group:'pink', tags:'vase pink ours', roses:false, img:'assets/customer/cards/c006.jpg', desc:"Pink lilies, hydrangea and roses.", alt:"Pink lilies & hydrangea" },
+  { id:'c008', name:"Blush roses & hydrangea", group:'pink', tags:'vase pink ours', roses:false, img:'assets/customer/cards/c008.jpg', desc:"Blush roses, lilies and hydrangea.", alt:"Blush roses & hydrangea" },
+  { id:'c010', name:"Lavender hydrangea & roses", group:'pink', tags:'vase pink purple ours', roses:false, img:'assets/customer/cards/c010.jpg', desc:"Lavender hydrangea with peach and pink roses.", alt:"Lavender hydrangea & roses" },
+  { id:'c012', name:"Stargazer lilies & hydrangea", group:'pink', tags:'vase pink ours', roses:false, img:'assets/customer/cards/c012.jpg', desc:"Stargazer lilies with pink hydrangea and roses.", alt:"Stargazer lilies & hydrangea" },
+  { id:'c118', name:"White hydrangea & pink roses", group:'pink', tags:'vase white pink ours', roses:true, img:'assets/customer/cards/c118.jpg', desc:"White hydrangea with pink roses and greenery.", alt:"White hydrangea & pink roses" },
+  { id:'c133', name:"Purple & pink mix", group:'pink', tags:'vase purple pink ours', roses:true, img:'assets/customer/cards/c133.jpg', desc:"Purple and pink roses with lavender blooms.", alt:"Purple & pink mix" },
+  { id:'c139', name:"Hot pink roses, birthday", group:'pink', tags:'vase pink ours', roses:true, img:'assets/customer/cards/c139.jpg', desc:"Hot pink roses with a birthday balloon.", alt:"Hot pink roses, birthday" },
+  { id:'c232', name:"Pink roses, lilies & bear", group:'pink', tags:'vase pink ours', roses:true, img:'assets/customer/cards/c232.jpg', desc:"Pink roses and lilies with a small bear.", alt:"Pink roses, lilies & bear" },
+  { id:'c247', name:"Pink tulips & hydrangea", group:'pink', tags:'vase pink ours', roses:false, img:'assets/customer/cards/c247.jpg', desc:"Pink tulips with pink and green hydrangea.", alt:"Pink tulips & hydrangea" },
+  { id:'c200', name:"Orange, pink & yellow roses", group:'pink', tags:'vase yellow pink ours', roses:true, img:'assets/customer/cards/c200.jpg', desc:"Orange, pink and yellow roses in a glass vase.", alt:"Orange, pink & yellow roses" },
+  { id:'c091', name:"Pink roses & lilies", group:'pink', tags:'event pink ours', roses:true, img:'assets/customer/cards/c091.jpg', desc:"Pink roses with lilies and greenery on a stand.", alt:"Pink roses & lilies" },
+  { id:'c120', name:"Pink standing spray", group:'pink', tags:'event pink ours', roses:true, img:'assets/customer/cards/c120.jpg', desc:"Pink roses and lilies in a tall standing spray.", alt:"Pink standing spray" },
+  { id:'c121', name:"Pink heart wreath", group:'pink', tags:'event pink ours', roses:true, img:'assets/customer/cards/c121.jpg', desc:"A pink rose heart on a stand with a ribbon.", alt:"Pink heart wreath" },
+  { id:'c129', name:"Pink & purple table spray", group:'pink', tags:'event pink purple ours', roses:true, img:'assets/customer/cards/c129.jpg', desc:"Pink and purple roses in a long table spray.", alt:"Pink & purple table spray" },
+  { id:'c143', name:"Pink & mauve roses on a stand", group:'pink', tags:'event pink ours', roses:true, img:'assets/customer/cards/c143.jpg', desc:"Pink and mauve roses with greenery on a stand.", alt:"Pink & mauve roses on a stand" },
+  { id:'c058', name:"Lavender roses, purple wrap", group:'purple', tags:'bouquet purple ours', roses:true, img:'assets/customer/cards/c058.jpg', desc:"Lavender roses in a purple wrap.", alt:"Lavender roses, purple wrap" },
+  { id:'c067', name:"Lavender roses & statice", group:'purple', tags:'bouquet purple ours', roses:true, img:'assets/customer/cards/c067.jpg', desc:"Lavender roses with purple statice.", alt:"Lavender roses & statice" },
+  { id:'c042', name:"Sunflowers & purple", group:'purple', tags:'vase sunflowers yellow purple ours', roses:false, img:'assets/customer/cards/c042.jpg', desc:"Sunflowers with purple blooms in a vase.", alt:"Sunflowers & purple" },
+  { id:'c070', name:"Sunflowers & purple roses", group:'purple', tags:'vase sunflowers yellow purple ours', roses:false, img:'assets/customer/cards/c070.jpg', desc:"Sunflowers with purple roses and greenery.", alt:"Sunflowers & purple roses" },
+  { id:'c245', name:"Purple standing spray", group:'purple', tags:'event purple ours', roses:false, img:'assets/customer/cards/c245.jpg', desc:"Purple and lavender blooms in a standing spray.", alt:"Purple standing spray" },
+  { id:'c061', name:"Cream roses, kraft wrap", group:'white', tags:'bouquet white ours', roses:true, img:'assets/customer/cards/c061.jpg', desc:"Cream roses with baby's breath in a kraft wrap.", alt:"Cream roses, kraft wrap" },
+  { id:'c096', name:"White roses & blue thistle", group:'white', tags:'bouquet white blue ours', roses:true, img:'assets/customer/cards/c096.jpg', desc:"White roses with blue thistle in a light blue wrap.", alt:"White roses & blue thistle" },
+  { id:'c235', name:"White roses & blue, blue wrap", group:'white', tags:'bouquet white blue ours', roses:true, img:'assets/customer/cards/c235.jpg', desc:"White roses with blue accents in a light blue wrap.", alt:"White roses & blue, blue wrap" },
+  { id:'c016', name:"White & cream roses", group:'white', tags:'vase white ours', roses:true, img:'assets/customer/cards/c016.jpg', desc:"White and cream roses with baby's breath.", alt:"White & cream roses" },
+  { id:'c221', name:"White & blue arrangement", group:'white', tags:'vase white blue ours', roses:true, img:'assets/customer/cards/c221.jpg', desc:"White roses and hydrangea with blue accents.", alt:"White & blue arrangement" },
+  { id:'c035', name:"Cream roses on a stand", group:'white', tags:'event white ours', roses:true, img:'assets/customer/cards/c035.jpg', desc:"Cream roses and white mums on a gold stand.", alt:"Cream roses on a stand" },
+  { id:'c094', name:"White & yellow roses on a stand", group:'white', tags:'event white yellow ours', roses:true, img:'assets/customer/cards/c094.jpg', desc:"White and yellow roses with greenery on a stand.", alt:"White & yellow roses on a stand" },
+  { id:'c119', name:"White wreath", group:'white', tags:'event white ours', roses:true, img:'assets/customer/cards/c119.jpg', desc:"A white rose and mum wreath on a stand.", alt:"White wreath" },
+  { id:'c218', name:"White lilies table spray", group:'white', tags:'event white ours', roses:false, img:'assets/customer/cards/c218.jpg', desc:"White lilies and mums in a long table spray.", alt:"White lilies table spray" },
+  { id:'c229', name:"White standing spray", group:'white', tags:'event white ours', roses:false, img:'assets/customer/cards/c229.jpg', desc:"White blooms and greenery in a tall standing spray.", alt:"White standing spray" },
+  { id:'c223', name:"Blue hydrangea standing spray", group:'white', tags:'event blue white ours', roses:false, img:'assets/customer/cards/c223.jpg', desc:"Blue hydrangea with white blooms on a stand.", alt:"Blue hydrangea standing spray" },
+  { id:'c224', name:"Blue & white table piece", group:'white', tags:'event blue white ours', roses:false, img:'assets/customer/cards/c224.jpg', desc:"Blue hydrangea and white blooms with a white bow.", alt:"Blue & white table piece" },
+  { id:'c100', name:"Blue roses, black wrap", group:'blue', tags:'bouquet blue ours', roses:true, img:'assets/customer/cards/c100.jpg', desc:"Blue roses in a black wrap with a blue ribbon.", alt:"Blue roses, black wrap" },
+  { id:'c101', name:"100 blue roses", group:'blue', tags:'bouquet blue ours', roses:true, img:'assets/customer/cards/c101.jpg', desc:"A hundred blue roses, hand-tied.", alt:"100 blue roses" },
+  { id:'c081', name:"Blue roses, white box", group:'blue', tags:'vase blue ours', roses:true, img:'assets/customer/cards/c081.jpg', desc:"Blue roses with baby's breath in a white box with a blue ribbon.", alt:"Blue roses, white box" },
+  { id:'c030', name:"Sunflowers, gold wrap", group:'yellow', tags:'bouquet sunflowers yellow ours', roses:false, img:'assets/customer/cards/c030.jpg', desc:"Sunflowers in a gold wrap.", alt:"Sunflowers, gold wrap" },
+  { id:'c137', name:"Yellow roses & mums", group:'yellow', tags:'bouquet yellow ours', roses:true, img:'assets/customer/cards/c137.jpg', desc:"Yellow roses and mums with burgundy accents in an orange wrap.", alt:"Yellow roses & mums" },
+  { id:'c077', name:"Sunflowers, simple", group:'yellow', tags:'vase sunflowers yellow ours', roses:false, img:'assets/customer/cards/c077.jpg', desc:"Sunflowers in a white vase.", alt:"Sunflowers, simple" },
+  { id:'c115', name:"Autumn pumpkin arrangement", group:'yellow', tags:'vase yellow mixed ours', roses:false, img:'assets/customer/cards/c115.jpg', desc:"Red roses, orange blooms and a white pumpkin.", alt:"Autumn pumpkin arrangement" },
+  { id:'c206', name:"Orange & yellow roses", group:'yellow', tags:'vase yellow ours', roses:true, img:'assets/customer/cards/c206.jpg', desc:"Orange and yellow roses with greenery.", alt:"Orange & yellow roses" },
+  { id:'c227', name:"Yellow roses & daisies", group:'yellow', tags:'vase yellow ours', roses:true, img:'assets/customer/cards/c227.jpg', desc:"Yellow roses with white daisies in a yellow vase.", alt:"Yellow roses & daisies" },
+  { id:'c243', name:"Yellow roses, gold bowl", group:'yellow', tags:'vase yellow ours', roses:true, img:'assets/customer/cards/c243.jpg', desc:"Yellow roses and mums in a gold bowl.", alt:"Yellow roses, gold bowl" },
+  { id:'c086', name:"Autumn mix", group:'mixed', tags:'vase mixed ours', roses:false, img:'assets/customer/cards/c086.jpg', desc:"Red, orange and white blooms together.", alt:"Autumn mix" },
+  { id:'c-red-100', name:"100 red roses", group:'hundred', tags:'hundred red', roses:true, img:'assets/catalog/red-100.jpg', desc:"100 red roses in our black wrap. Pick 25, 50 or 100.", alt:"100 red roses in a black wrap" },
+  { id:'c-red-hotpink', name:"Red & hot pink roses", group:'hundred', tags:'hundred red pink', roses:true, img:'assets/catalog/red-hotpink.jpg', desc:"Red & hot pink roses in our black wrap. Pick 25, 50 or 100.", alt:"Red & hot pink roses in a black wrap" },
+  { id:'c-red-white', name:"Red & white roses", group:'hundred', tags:'hundred red white', roses:true, img:'assets/catalog/red-white.jpg', desc:"Red & white roses in our black wrap. Pick 25, 50 or 100.", alt:"Red & white roses in a black wrap" },
+  { id:'c-red-yellow', name:"Red & yellow roses", group:'hundred', tags:'hundred red yellow', roses:true, img:'assets/catalog/red-yellow.jpg', desc:"Red & yellow roses in our black wrap. Pick 25, 50 or 100.", alt:"Red & yellow roses in a black wrap" },
+  { id:'c-hotpink-100', name:"100 hot pink roses", group:'hundred', tags:'hundred pink', roses:true, img:'assets/catalog/hotpink-100.jpg', desc:"100 hot pink roses in our black wrap. Pick 25, 50 or 100.", alt:"100 hot pink roses in a black wrap" },
+  { id:'c-pink-100', name:"100 pink roses", group:'hundred', tags:'hundred pink', roses:true, img:'assets/catalog/pink-100.jpg', desc:"100 pink roses in our black wrap. Pick 25, 50 or 100.", alt:"100 pink roses in a black wrap" },
+  { id:'c-pink-white', name:"Pink & white roses", group:'hundred', tags:'hundred pink white', roses:true, img:'assets/catalog/pink-white.jpg', desc:"Pink & white roses in our black wrap. Pick 25, 50 or 100.", alt:"Pink & white roses in a black wrap" },
+  { id:'c-hotpink-lavender', name:"Hot pink & lavender roses", group:'hundred', tags:'hundred pink purple', roses:true, img:'assets/catalog/hotpink-lavender.jpg', desc:"Hot pink & lavender roses in our black wrap. Pick 25, 50 or 100.", alt:"Hot pink & lavender roses in a black wrap" },
+  { id:'c-peach-100', name:"100 peach roses", group:'hundred', tags:'hundred pink', roses:true, img:'assets/catalog/peach-100.jpg', desc:"100 peach roses in our black wrap. Pick 25, 50 or 100.", alt:"100 peach roses in a black wrap" },
+  { id:'c-peach-cream', name:"Peach & cream roses", group:'hundred', tags:'hundred pink white', roses:true, img:'assets/catalog/peach-cream.jpg', desc:"Peach & cream roses in our black wrap. Pick 25, 50 or 100.", alt:"Peach & cream roses in a black wrap" },
+  { id:'c-white-100', name:"100 white roses", group:'hundred', tags:'hundred white', roses:true, img:'assets/catalog/white-100.jpg', desc:"100 white roses in our black wrap. Pick 25, 50 or 100.", alt:"100 white roses in a black wrap" },
+  { id:'c-cream-100', name:"100 cream roses", group:'hundred', tags:'hundred white', roses:true, img:'assets/catalog/cream-100.jpg', desc:"100 cream roses in our black wrap. Pick 25, 50 or 100.", alt:"100 cream roses in a black wrap" },
+  { id:'c-lavender-100', name:"100 lavender roses", group:'hundred', tags:'hundred purple', roses:true, img:'assets/catalog/lavender-100.jpg', desc:"100 lavender roses in our black wrap. Pick 25, 50 or 100.", alt:"100 lavender roses in a black wrap" },
+  { id:'c-purple-100', name:"100 purple roses", group:'hundred', tags:'hundred purple', roses:true, img:'assets/catalog/purple-100.jpg', desc:"100 purple roses in our black wrap. Pick 25, 50 or 100.", alt:"100 purple roses in a black wrap" },
+  { id:'c-purple-lavender', name:"Purple & lavender roses", group:'hundred', tags:'hundred purple', roses:true, img:'assets/catalog/purple-lavender.jpg', desc:"Purple & lavender roses in our black wrap. Pick 25, 50 or 100.", alt:"Purple & lavender roses in a black wrap" },
+  { id:'c-yellow-100', name:"100 yellow roses", group:'hundred', tags:'hundred yellow', roses:true, img:'assets/catalog/yellow-100.jpg', desc:"100 yellow roses in our black wrap. Pick 25, 50 or 100.", alt:"100 yellow roses in a black wrap" },
+  { id:'c-orange-100', name:"100 orange roses", group:'hundred', tags:'hundred yellow', roses:true, img:'assets/catalog/orange-100.jpg', desc:"100 orange roses in our black wrap. Pick 25, 50 or 100.", alt:"100 orange roses in a black wrap" },
+  { id:'c-blue-100', name:"100 blue roses", group:'hundred', tags:'hundred blue', roses:true, img:'assets/catalog/blue-100.jpg', desc:"100 blue roses in our black wrap. Pick 25, 50 or 100.", alt:"100 blue roses in a black wrap" },
+  { id:'c-blue-white', name:"Blue & white roses", group:'hundred', tags:'hundred blue white', roses:true, img:'assets/catalog/blue-white.jpg', desc:"Blue & white roses in our black wrap. Pick 25, 50 or 100.", alt:"Blue & white roses in a black wrap" },
+  { id:'c-black-100', name:"100 black roses", group:'hundred', tags:'hundred blue', roses:true, img:'assets/catalog/black-100.jpg', desc:"100 black roses in our black wrap. Pick 25, 50 or 100.", alt:"100 black roses in a black wrap" },
+];
+
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+$('#year').textContent = new Date().getFullYear();
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- smooth scroll ---------- */
+let lenis = null;
+if (!reduce && window.Lenis) {
+  lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+const scrollTo = target => {
+  const el = typeof target === 'string' ? $(target) : target; if (!el) return;
+  if (lenis) lenis.scrollTo(el, { offset: -10, duration: 1.4 });
+  else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+};
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const id = a.getAttribute('href'); if (!id.startsWith('#') || id.length < 2) return; e.preventDefault(); scrollTo(id); }));
+
+/* ---------- WhatsApp buttons (weddings, events) ---------- */
+$$('[data-wa]').forEach(a => { a.href = `https://wa.me/${SHOP.phoneE164}?text=${encodeURIComponent(a.dataset.wa)}`; });
+
+/* ---------- nav background + sticky bar ---------- */
+const nav = $('#nav');
+addEventListener('scroll', () => { nav.classList.toggle('is-solid', scrollY > 80); $('#stickybar').classList.toggle('is-on', scrollY > innerHeight * .9 && !lb.classList.contains('is-on')); }, { passive: true });
+
+/* ---------- petals (fall on their own, no mouse) ---------- */
+(function petals(){
+  const c = $('#petals'); if (!c || reduce) { c && c.remove(); return; }
+  const ctx = c.getContext('2d'); let W, H, P = [];
+  const dpr = Math.min(devicePixelRatio, 2);
+  const size = () => { W = c.width = innerWidth * dpr; H = c.height = innerHeight * dpr; c.style.width = innerWidth+'px'; c.style.height = innerHeight+'px'; };
+  size(); addEventListener('resize', size);
+  const n = innerWidth < 700 ? 14 : 28;
+  const mk = init => ({ x: Math.random()*W, y: init ? Math.random()*H : -40*dpr, r: (6+Math.random()*9)*dpr, vy: (.25+Math.random()*.5)*dpr, vx: (Math.random()-.5)*.35*dpr, a: Math.random()*6.28, va: (Math.random()-.5)*.02, o: .22+Math.random()*.4, hue: Math.random()<.7 ? '#c4132f' : '#f3c6cf' });
+  for (let i=0;i<n;i++) P.push(mk(true));
+  let visible = true; new IntersectionObserver(e => visible = e[0].isIntersecting).observe(c);
+  (function draw(){
+    if (visible) {
+      ctx.clearRect(0,0,W,H);
+      for (const p of P){
+        p.x += p.vx; p.y += p.vy; p.a += p.va;
+        if (p.y > H+40 || p.x < -40 || p.x > W+40) Object.assign(p, mk(false));
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a); ctx.globalAlpha = p.o; ctx.fillStyle = p.hue;
+        ctx.beginPath(); ctx.moveTo(0,-p.r); ctx.bezierCurveTo(p.r,-p.r,p.r,p.r*.6,0,p.r); ctx.bezierCurveTo(-p.r,p.r*.6,-p.r,-p.r,0,-p.r); ctx.fill(); ctx.restore();
+      }
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* ---------- intro ---------- */
+$$('.hero__title .w').forEach(w => { w.innerHTML = [...w.textContent].map(ch => `<span class="l">${ch}</span>`).join(''); });
+addEventListener('load', () => {
+  setTimeout(() => {
+    $('#loader').classList.add('is-done');
+    if (reduce) return;
+    gsap.timeline({ defaults: { ease: 'expo.out' } })
+      .from('.hero__media', { scale: 1.15, duration: 2.2, ease: 'power2.out' }, 0)
+      .to('.hero__title .l', { opacity: 1, y: 0, rotate: 0, duration: 1.3, stagger: 0.05 }, .2)
+      .to('.hero__inner .eyebrow', { opacity: 1, duration: 1 }, .6)
+      .to('.hero__sub', { opacity: 1, duration: 1.1 }, .8)
+      .to('.hero__btns', { opacity: 1, duration: 1 }, 1);
+  }, 700);
+  setTimeout(() => ScrollTrigger.refresh(), 400);
+});
+
+/* ---------- scroll scenes ---------- */
+if (!reduce) {
+  gsap.to('.hero__media', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.hero__inner', { yPercent: -25, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '35% top', end: 'bottom top', scrub: true } });
+
+  // signature gallery: the row slides sideways while the section holds still (desktop only)
+  ScrollTrigger.matchMedia({ '(min-width: 900px)': () => {
+    const track = $('#sigTrack'); const dist = () => track.scrollWidth - innerWidth;
+    gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '.sig', start: 'top top', end: () => '+=' + dist(), pin: '.sig__pin', scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 } });
+    $$('.sigcard').forEach((c, i) => gsap.to(c, { y: i % 2 ? -18 : 18, ease: 'none', scrollTrigger: { trigger: '.sig', start: 'top top', end: () => '+=' + dist(), scrub: true } }));
+  } });
+
+  $$('.occ__panel').forEach(p => {
+    gsap.fromTo(p.querySelector('img'), { scale: 1.16 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: p, start: 'top bottom', end: 'top top', scrub: true } });
+    gsap.from(p.querySelector('.occ__body'), { y: 50, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: p, start: 'top 65%' } });
+  });
+  $$('.shop__head, .sched__head, .visit h2').forEach(el => gsap.from(el, { y: 40, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
+  gsap.from('.foot__big', { yPercent: 30, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.foot', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+}
+
+/* ---------- shop grid ---------- */
+function kind(tags){ return tags.includes('bouquet') ? 'Wrapped bouquet' : tags.includes('event') ? 'Event piece' : tags.includes('hundred') ? '100-rose collection' : 'Vase or box'; }
+const grid = $('#grid');
+const GROUP_NAMES = { red:'Red', pink:'Pink', purple:'Purple & lavender', white:'White & cream', blue:'Blue', yellow:'Sunflowers & yellow', mixed:'Mixed', hundred:'The 100-rose collection' };
+let lastGroup = null;
+grid.innerHTML = ITEMS.map(it => (it.group !== lastGroup ? ((lastGroup = it.group), `<h3 class="grid__head" data-g="${it.group}">${GROUP_NAMES[it.group]}</h3>`) : '') + `
+  <figure class="prod" data-item="${it.id}" data-f="${it.tags}" tabindex="0" role="button" aria-label="${it.name}">
+    <div class="prod__img"><img src="${it.img}" alt="${it.alt}" loading="lazy">${it.tags.includes('ours') ? '<span class="prod__badge">Made by us</span>' : ''}</div>
+    <figcaption class="prod__body"><div><h3>${it.name}</h3><span>${kind(it.tags)}</span></div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></figcaption>
+  </figure>`).join('');
+const prods = $$('.prod');
+const io2 = new IntersectionObserver(es => es.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('is-in'), 120 * [...e.target.parentNode.children].indexOf(e.target)); io2.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+$$('.how__step').forEach(t => io2.observe(t));
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -6% 0px' });
+prods.forEach(t => io.observe(t));
+$('#filters').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  $$('.chip').forEach(c => c.classList.toggle('is-on', c === b));
+  const f = b.dataset.f;
+  prods.forEach(t => { const show = f === 'all' || t.dataset.f.split(' ').includes(f); t.classList.toggle('is-hidden', !show); if (show) t.classList.add('is-in'); });
+  $$('.grid__head').forEach(h => h.classList.toggle('is-hidden', f !== 'all'));
+  ScrollTrigger.refresh();
+});
+
+/* ---------- lightbox ---------- */
+const lb = $('#lb'); let current = null, lastFocus = null, size = SHOP.sizes[0];
+function openItem(id){
+  const it = ITEMS.find(i => i.id === id); if (!it) return; current = it; size = SHOP.sizes[0];
+  $('#lbImg').src = it.img; $('#lbImg').alt = it.alt; $('#lbImgWrap').classList.remove('is-cut');
+  $('#lbTag').textContent = (it.tags.includes('ours') ? 'Made by us · ' : '') + kind(it.tags); $('#lbTitle').textContent = it.name; $('#lbDesc').textContent = it.desc;
+  $('#lbOpts').style.display = it.roses ? '' : 'none';
+  $('#sizes').innerHTML = SHOP.sizes.map((s, i) => `<button type="button" class="opt${i===0?' is-on':''}" data-s="${s}">${s}</button>`).join('');
+  syncWa(); lastFocus = document.activeElement; lb.classList.add('is-on'); document.body.style.overflow = 'hidden'; if (lenis) lenis.stop();
+  $('#lbClose').focus();
+}
+function closeLb(){ lb.classList.remove('is-on'); document.body.style.overflow = ''; if (lenis) lenis.start(); if (lastFocus) lastFocus.focus(); }
+function syncWa(){ if (!current) return; const sz = current.roses && size !== SHOP.sizes[0] ? ` (${size})` : ''; const msg = `Hi La Diosa Flowers! I'd like to order: ${current.name}${sz}. When can you deliver?`; $('#lbWa').href = `https://wa.me/${SHOP.phoneE164}?text=${encodeURIComponent(msg)}`; }
+$('#sizes').addEventListener('click', e => { const b = e.target.closest('.opt'); if (!b) return; $$('.opt').forEach(o => o.classList.toggle('is-on', o === b)); size = b.dataset.s; syncWa(); });
+document.addEventListener('click', e => { const t = e.target.closest('[data-item]'); if (t && !lb.contains(t)) openItem(t.dataset.item); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('is-on')) closeLb(); if (e.key === 'Enter' && e.target.classList?.contains('prod')) openItem(e.target.dataset.item); });
+$('#lbClose').addEventListener('click', closeLb);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+$('#lbPick').addEventListener('click', () => { pickItem(current, current.roses ? size : null); closeLb(); scrollTo('#schedule'); toast(`${current.name} added. Now pick your time.`); });
+
+/* ---------- scheduler ---------- */
+const state = { item: null, size: null, mode: 'delivery', date: null, slot: null };
+function pickItem(it, sz){
+  state.item = it; state.size = sz;
+  $('#pickImg').src = it ? it.img : 'assets/customer/cards/c051.jpg'; $('#pickThumb').classList.remove('is-cut');
+  $('#pickName').textContent = it ? it.name : 'Let us choose'; $('#pickTag').textContent = it ? (it.tags.includes('ours') ? 'Made by us · ' : '') + kind(it.tags) : "Florist's choice";
+  $('#sSize').textContent = sz || 'Let us suggest';
+}
+pickItem(null, null);
+$('#pickChange').addEventListener('click', () => scrollTo('#shop'));
+
+const fmtDay = d => d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+const cutoff = SHOP.sameDayCutoffHour; $('#cutoffLabel').textContent = new Date(2000,0,1,cutoff).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+function buildDates(){
+  const wrap = $('#dates'); wrap.innerHTML = ''; const now = new Date(); let first = null;
+  for (let i=0;i<=SHOP.daysAhead;i++){
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate()+i);
+    const closed = SHOP.closedWeekdays.includes(d.getDay());
+    const late = i === 0 && now.getHours() >= cutoff;
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'date'; b.dataset.iso = d.toISOString();
+    b.innerHTML = `<small>${d.toLocaleDateString('en-US',{weekday:'short'})}</small><strong>${d.getDate()}</strong><em>${i===0?'Today':i===1?'Tmrw':d.toLocaleDateString('en-US',{month:'short'})}</em>`;
+    if (closed || late) { b.disabled = true; b.title = closed ? 'Closed' : 'Same-day cutoff passed'; } else if (!first) first = b;
+    b.addEventListener('click', () => selectDate(b));
+    wrap.appendChild(b);
+  }
+  if (first) selectDate(first);
+}
+function selectDate(b){ $$('.date').forEach(x => x.classList.toggle('is-on', x === b)); state.date = new Date(b.dataset.iso); state.slot = null; buildSlots(); sync(); }
+function buildSlots(){
+  const wrap = $('#slots'); wrap.innerHTML = '';
+  const list = state.mode === 'delivery' ? SHOP.deliverySlots : SHOP.pickupSlots;
+  const now = new Date(); const isToday = state.date && state.date.toDateString() === now.toDateString();
+  list.forEach(s => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'slot'; b.textContent = s.label;
+    if (isToday && s.start <= now.getHours()) b.disabled = true;
+    b.addEventListener('click', () => { $$('.slot').forEach(x => x.classList.toggle('is-on', x === b)); state.slot = s.label; sync(); });
+    wrap.appendChild(b);
+  });
+}
+$('#mode').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  $$('#mode button').forEach(x => x.classList.toggle('is-on', x === b));
+  state.mode = b.dataset.mode; state.slot = null;
+  $('#addrField').style.display = state.mode === 'delivery' ? '' : 'none';
+  buildSlots(); sync();
+});
+function sync(){ $('#sMode').textContent = state.mode === 'delivery' ? 'Delivery' : 'Pickup'; $('#sDate').textContent = state.date ? fmtDay(state.date) : '—'; $('#sSlot').textContent = state.slot || '—'; }
+buildDates();
+
+$('#form').addEventListener('submit', e => {
+  e.preventDefault(); let ok = true;
+  const need = (id, cond) => { const f = $(id).closest('.field'); f.classList.toggle('is-err', !cond); if (!cond && ok) { $(id).focus(); ok = false; } };
+  need('#fName', $('#fName').value.trim().length > 1);
+  need('#fPhone', $('#fPhone').value.replace(/\D/g,'').length >= 10);
+  if (state.mode === 'delivery') need('#fAddr', $('#fAddr').value.trim().length > 5);
+  if (!state.slot) { toast('Pick a time window first'); ok = false; }
+  if (!ok) return;
+  const text = [
+    `Hi La Diosa Flowers! I'd like to order:`,
+    `• Arrangement: ${state.item ? state.item.name : "Florist's choice"}${state.size && state.size !== SHOP.sizes[0] ? ` (${state.size})` : ''}`,
+    `• ${state.mode === 'delivery' ? 'Delivery' : 'Pickup'}: ${fmtDay(state.date)}, ${state.slot}`,
+    state.mode === 'delivery' ? `• Address: ${$('#fAddr').value.trim()}` : null,
+    `• Name: ${$('#fName').value.trim()}`,
+    `• Phone: ${$('#fPhone').value.trim()}`,
+    $('#fCard').value.trim() ? `• Card: "${$('#fCard').value.trim()}"` : null,
+    $('#fNote').value.trim() ? `• Notes: ${$('#fNote').value.trim()}` : null
+  ].filter(Boolean).join('\n');
+  $('#doneText').textContent = text;
+  $('#waLink').href = `https://wa.me/${SHOP.phoneE164}?text=${encodeURIComponent(text)}`;
+  $('#smsLink').href = `sms:+${SHOP.phoneE164}?&body=${encodeURIComponent(text)}`;
+  $('#done').classList.add('is-on');
+  $$('#form .step, .sched__actions').forEach(el => el.style.display = 'none');
+  ScrollTrigger.refresh(); scrollTo('#done');
+});
+
+let tt; function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('is-on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('is-on'), 3200); }
+</script>
+</body>
+</html>
